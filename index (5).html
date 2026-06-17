@@ -1,155 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucky Foot Hoof Care | Monument, CO</title>
-  <meta name="description" content="Professional farrier services in Monument & Colorado Springs, CO. Hoof trimming, shoeing, and rehabilitation by Mike — trusted by horse owners across the region." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+"use client";
 
-  <!-- NAV -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">🐴 Lucky Foot</a>
-    <button class="nav-toggle" aria-label="menu" onclick="toggleMenu()">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="reviews.html">Reviews</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+import { Phone, Calendar, Scissors } from "lucide-react";
+import { useState } from "react";
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <span class="hero-eyebrow">Monument, Colorado</span>
-      <h1>Your horse deserves the best ground to stand on.</h1>
-      <p>Expert hoof care from a farrier who shows up, listens, and puts your horse's comfort first.</p>
-      <div class="hero-actions">
-        <a href="contact.html" class="btn btn-primary">Book an Appointment</a>
-        <a href="services.html" class="btn btn-outline">Our Services</a>
-      </div>
-    </div>
-    <div class="hero-badge">
-      <span class="badge-stars">★★★★★</span>
-      <span class="badge-text">5.0 · 28 reviews on Google</span>
-    </div>
-  </section>
+export default function Home() {
+  const [loading, setLoading] = useState(false);
 
-  <!-- INTRO -->
-  <section class="section intro">
-    <div class="container two-col">
-      <div class="intro-text">
-        <span class="label">About Mike</span>
-        <h2>Calm hands. Honest work. Healthy hooves.</h2>
-        <p>Hi, I'm Mike — the farrier behind Lucky Foot Hoof Care. I've been working with horses across Colorado Springs and Monument for years, and my approach has always been the same: quiet, practical, and focused on what's best for your horse.</p>
-        <p>Whether you're running barefoot or need therapeutic shoeing, I'll take the time to understand your horse's needs and communicate openly along the way.</p>
-        <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem">Get in Touch</a>
-      </div>
-      <div class="intro-stats">
-        <div class="stat">
-          <span class="stat-num">5.0</span>
-          <span class="stat-label">Google Rating</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">28+</span>
-          <span class="stat-label">Happy Clients</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">6</span>
-          <span class="stat-label">Days a Week</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  async function handleSubmit(e: any) {
+    e.preventDefault();
 
-  <!-- SERVICES PREVIEW -->
-  <section class="section services-preview bg-light">
-    <div class="container">
-      <span class="label center">What We Do</span>
-      <h2 class="center">Services</h2>
-      <div class="cards">
-        <div class="card">
-          <div class="card-icon">✂️</div>
-          <h3>Hoof Trimming</h3>
-          <p>Regular, precise trimming to encourage healthy growth and prevent cracks, splits, and imbalance.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🔨</div>
-          <h3>Shoeing</h3>
-          <p>Conventional, therapeutic, and custom shoeing solutions tailored to your horse's specific needs.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🩹</div>
-          <h3>Hoof Rehabilitation</h3>
-          <p>Specialized care for horses recovering from injuries, with coordination alongside your vet when needed.</p>
-        </div>
-      </div>
-      <div class="center" style="margin-top:2.5rem">
-        <a href="services.html" class="btn btn-outline">See All Services</a>
-      </div>
-    </div>
-  </section>
+    setLoading(true);
 
-  <!-- REVIEW SNIPPET -->
-  <section class="section">
-    <div class="container">
-      <span class="label center">From Our Clients</span>
-      <h2 class="center">What Horse Owners Say</h2>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <p>"Mike communicates well, shows up when he says he's going to, and is honest about what he sees. His goal is the comfort of the horse."</p>
-          <span class="reviewer">— Shire horse owner, Monument CO</span>
-        </div>
-        <div class="review-card">
-          <p>"He is knowledgeable, honest, and puts the well-being of the horse and hoof above all else. Highly recommend for your shoeing needs."</p>
-          <span class="reviewer">— Long-time client</span>
-        </div>
-        <div class="review-card">
-          <p>"Mike is amazing — so professional, skilled, kind, and friendly. I am so glad I found him for my ponies."</p>
-          <span class="reviewer">— Pony owner, Colorado Springs</span>
-        </div>
-      </div>
-      <div class="center" style="margin-top:2rem">
-        <a href="reviews.html" class="btn btn-outline">Read All Reviews</a>
-      </div>
-    </div>
-  </section>
+    const form = new FormData(e.target);
 
-  <!-- CTA -->
-  <section class="section cta-section">
-    <div class="container center">
-      <h2>Ready to book an appointment?</h2>
-      <p>Serving Monument, Colorado Springs, and surrounding areas — Mon–Sat, 9am to 5pm.</p>
-      <a href="contact.html" class="btn btn-primary">Contact Mike</a>
-    </div>
-  </section>
+    const booking = {
+      name: form.get("name"),
+      phone: form.get("phone"),
+      service: form.get("service"),
+      date: form.get("date"),
+    };
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>
-        <strong>🐴 Lucky Foot Hoof Care</strong><br/>
-        17955 Sierra Way, Monument, CO 80132
-      </div>
-      <div>
-        <a href="tel:+17194338367">(719) 433-8367</a><br/>
-        Mon–Sat: 9am – 5pm
-      </div>
-      <div>
-        <a href="services.html">Services</a> &nbsp;·&nbsp;
-        <a href="reviews.html">Reviews</a> &nbsp;·&nbsp;
-        <a href="contact.html">Contact</a>
-      </div>
-    </div>
-    <div class="footer-copy">© 2025 Lucky Foot Hoof Care. All rights reserved.</div>
-  </footer>
+    console.log(booking);
 
-  <script src="js/main.js"></script>
-</body>
-</html>
+    alert("Appointment Request Sent!");
+
+    setLoading(false);
+    e.target.reset();
+  }
+
+  return (
+    <main className="bg-black text-white">
+      {/* HERO */}
+      <section className="min-h-screen flex items-center justify-center text-center px-6">
+        <div>
+          <h1 className="text-6xl md:text-7xl font-bold mb-6">
+            Next Level Barbershop
+          </h1>
+
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+            Premium Haircuts, Skin Fades, Beard Trims &
+            Professional Grooming.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="#booking"
+              className="bg-white text-black px-6 py-3 rounded-xl font-semibold"
+            >
+              Book Appointment
+            </a>
+
+            <a
+              href="tel:+14076923883"
+              className="border border-white px-6 py-3 rounded-xl"
+            >
+              Call Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-20 px-6 bg-zinc-950">
+        <h2 className="text-center text-4xl font-bold mb-12">
+          Our Services
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {[
+            "Haircut",
+            "Skin Fade",
+            "Beard Trim",
+            "Kids Haircut",
+            "Hot Towel Shave",
+            "VIP Grooming",
+          ].map((item) => (
+            <div
+              key={item}
+              className="bg-zinc-900 rounded-2xl p-8 text-center"
+            >
+              <Scissors className="mx-auto mb-4" />
+              <h3 className="text-xl font-semibold">
+                {item}
+              </h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section className="py-20 px-6">
+        <h2 className="text-center text-4xl font-bold mb-12">
+          Gallery
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+          <div className="bg-zinc-800 h-64 rounded-xl"></div>
+          <div className="bg-zinc-800 h-64 rounded-xl"></div>
+          <div className="bg-zinc-800 h-64 rounded-xl"></div>
+        </div>
+      </section>
+
+      {/* BOOKING */}
+      <section
+        id="booking"
+        className="py-20 px-6 bg-zinc-950"
+      >
+        <h2 className="text-center text-4xl font-bold mb-10">
+          Book Appointment
+        </h2>
+
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-xl mx-auto space-y-4"
+        >
+          <input
+            name="name"
+            required
+            placeholder="Full Name"
+            className="w-full p-4 rounded-xl bg-zinc-800"
+          />
+
+          <input
+            name="phone"
+            required
+            placeholder="Phone Number"
+            className="w-full p-4 rounded-xl bg-zinc-800"
+          />
+
+          <select
+            name="service"
+            className="w-full p-4 rounded-xl bg-zinc-800"
+          >
+            <option>Haircut</option>
+            <option>Skin Fade</option>
+            <option>Beard Trim</option>
+            <option>VIP Grooming</option>
+          </select>
+
+          <input
+            name="date"
+            type="date"
+            required
+            className="w-full p-4 rounded-xl bg-zinc-800"
+          />
+
+          <button
+            className="w-full bg-white text-black p-4 rounded-xl font-semibold"
+          >
+            {loading ? "Sending..." : "Book Now"}
+          </button>
+        </form>
+      </section>
+
+      {/* CONTACT */}
+      <section className="py-20 px-6 text-center">
+        <h2 className="text-4xl font-bold mb-6">
+          Contact Us
+        </h2>
+
+        <a
+          href="tel:+14076923883"
+          className="inline-flex items-center gap-2 text-xl"
+        >
+          <Phone />
+          +1 (407) 692-3883
+        </a>
+
+        <div className="mt-10">
+          <iframe
+            src="https://www.google.com/maps?q=Next+Level+Barbershop+Orlando&output=embed"
+            width="100%"
+            height="400"
+            loading="lazy"
+            className="rounded-xl"
+          />
+        </div>
+      </section>
+
+      {/* FLOATING BUTTON */}
+      <a
+        href="tel:+14076923883"
+        className="fixed bottom-6 right-6 bg-white text-black p-4 rounded-full shadow-lg"
+      >
+        <Calendar />
+      </a>
+    </main>
+  );
+}
